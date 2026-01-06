@@ -35,13 +35,21 @@ This project demonstrates practical use of AI tools, automation, and clean softw
 ai-news-video-tool/
 │
 ├── assets/ # Static assets (background images, etc.)
+
 ├── image_fetcher.py # Fetches images related to news topic
+
 ├── news_fetcher.py # Scrapes trending news articles
+
 ├── script_generator.py # Generates AI-based or fallback news scripts
+
 ├── voiceover.py # Converts script to audio narration
+
 ├── video_generator.py # Creates final video using images + audio
+
 ├── requirements.txt # Python dependencies
+
 ├── .gitignore # Files ignored by Git
+
 └── README.md # Project documentation
 
 
