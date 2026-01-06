@@ -29,6 +29,7 @@ This project demonstrates practical use of AI tools, automation, and clean softw
 
 ---
 
+
 ## 📂 Project Structure
 
 ai-news-video-tool/
@@ -65,6 +66,8 @@ venv\Scripts\activate   # Windows
 
 pip install -r requirements.txt
 
+---
+
 🔑 (Optional) OpenAI API Setup
 
 This project works with or without an OpenAI API key.
@@ -81,6 +84,8 @@ OPENAI_API_KEY=your_api_key_here
 
 If no API key is found, the system automatically uses a fallback script.
 
+
+---
 ▶️ How to Run the Tool
 
 Run each module step-by-step:
@@ -94,6 +99,9 @@ python video_generator.py
 
 After execution, the generated video will be available locally in the output folder (ignored by Git).
 
+
+---
+
 🧠 Design Decisions & Reliability
 
 RSS-based news scraping is used for stability.
@@ -103,6 +111,9 @@ The system never crashes if an API key is missing.
 Modular architecture improves readability and maintainability.
 
 Designed as a working prototype, not a production system.
+
+
+---
 
 📌 Evaluation Readiness
 
@@ -117,6 +128,8 @@ This project satisfies:
 ✅ Easy-to-understand architecture
 
 ✅ Graceful failure handling
+
+---
 
 👤 Author
 
