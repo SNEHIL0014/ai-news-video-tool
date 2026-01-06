@@ -33,6 +33,7 @@ This project demonstrates practical use of AI tools, automation, and clean softw
 ## 📂 Project Structure
 
 ai-news-video-tool/
+
 │
 ├── assets/ # Static assets (background images, etc.)
 
