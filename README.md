@@ -1,98 +1,126 @@
-📺 AI News Video Generation Tool
-An automated pipeline that transforms trending news into engaging short-form video content. This tool bridges the gap between raw data scraping and multimedia production using modern AI and automation libraries.
+# 📰 AI News Video Generation Tool
 
-🌟 Overview
-This prototype automates the entire video production workflow:
+An AI-based prototype that automatically generates short (30–60 seconds) news videos from trending news articles.  
+The tool scrapes trending news, generates a concise script, converts it into a voiceover, and assembles a video using images and text overlays.
 
-Discovery: Scrapes real-time trending topics from Google News.
+This project demonstrates practical use of AI tools, automation, and clean software architecture.
 
-Synthesis: Distills complex articles into a 30-60 second "neutral tone" script via OpenAI.
+---
 
-Narration: Converts text to speech for high-quality audio voiceovers.
+## 🚀 Features
 
-Production: Dynamically assembles images and text overlays into a final MP4 file.
+- 🔍 Scrapes trending news articles using Google News (GNews)
+- 🧠 Generates short, neutral news scripts using OpenAI (with fallback support)
+- 🎙️ Converts scripts into voiceovers using Text-to-Speech
+- 🎞️ Creates short videos with images, text overlays, and audio
+- 🔁 Graceful fallback when API keys are unavailable
+- 🧩 Modular and easy-to-understand code structure
 
-🛠️ Tech Stack
-Logic: Python 3
+---
 
-Data: GNews (RSS-based scraping)
+## 🛠️ Tech Stack
 
-LLM: OpenAI GPT-4o (with local fallback logic)
+- **Language:** Python 3  
+- **News Scraping:** GNews  
+- **AI Script Generation:** OpenAI API (optional, fallback included)  
+- **Text-to-Speech:** gTTS  
+- **Video Creation:** MoviePy  
+- **Environment Management:** Python Virtual Environment  
 
-Audio: gTTS (Google Text-to-Speech)
+---
 
-Video Engine: MoviePy (FFmpeg-based processing)
-
-📂 Project Structure
+## 📂 Project Structure
 
 ai-news-video-tool/
-├── assets/              # Branding, background music, or static images
-├── news_fetcher.py      # Module 1: News discovery logic
-├── script_generator.py  # Module 2: AI prompt engineering & Fallbacks
-├── image_fetcher.py     # Module 3: Contextual image gathering
-├── voiceover.py         # Module 4: Audio synthesis
-├── video_generator.py   # Module 5: Video compositing and rendering
-├── main.py              # Orchestrator (Run the entire pipeline)
-├── requirements.txt     # Dependency manifest
-└── .env                 # API Credentials (ignored by git)
+│
+├── assets/ # Static assets (background images, etc.)
+├── image_fetcher.py # Fetches images related to news topic
+├── news_fetcher.py # Scrapes trending news articles
+├── script_generator.py # Generates AI-based or fallback news scripts
+├── voiceover.py # Converts script to audio narration
+├── video_generator.py # Creates final video using images + audio
+├── requirements.txt # Python dependencies
+├── .gitignore # Files ignored by Git
+└── README.md # Project documentation
 
 
-⚙️ Setup & Installation
 
-1. Environment Preparation
+---
 
-# Clone the repository
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the Repository
+
+```bash
 git clone https://github.com/SNEHIL0014/ai-news-video-tool.git
 cd ai-news-video-tool
+```
 
-# Create virtual environment
+2️⃣ Create & Activate Virtual Environment
+
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+venv\Scripts\activate   # Windows
 
-# Install dependencies
+3️⃣ Install Dependencies
+
 pip install -r requirements.txt
 
+🔑 (Optional) OpenAI API Setup
 
-2. Configuration (Optional)
-   
-Create a .env file in the root directory to enable AI script generation:
+This project works with or without an OpenAI API key.
 
-OPENAI_API_KEY=your_actual_key_here
+If you want AI-generated scripts:
 
-Note: If no key is provided, the system defaults to a "Fallback Mode" using template-based scripts.
+Create a .env file in the project root
+
+Add:  
+
+OPENAI_API_KEY=your_api_key_here
+
+⚠️ .env is ignored by Git and must not be committed.
+
+If no API key is found, the system automatically uses a fallback script.
+
+▶️ How to Run the Tool
+
+Run each module step-by-step:
+
+python news_fetcher.py
+python script_generator.py
+python image_fetcher.py
+python voiceover.py
+python video_generator.py
 
 
-▶️ Usage
-You can run the modules individually for debugging, or execute the full pipeline:
+After execution, the generated video will be available locally in the output folder (ignored by Git).
 
-# To generate a full video from scratch
-python main.py
+🧠 Design Decisions & Reliability
 
-Module Breakdown:
+RSS-based news scraping is used for stability.
 
-Order,Script,Responsibility
-1,news_fetcher.py,Extracts the latest headlines and URLs.
-2,script_generator.py,Summarizes news into a narratable script.
-3,image_fetcher.py,Downloads relevant visuals for the topic.
-4,voiceover.py,Generates the .mp3 narration.
-5,video_generator.py,Combines everything into a final .mp4.
+The system never crashes if an API key is missing.
 
+Modular architecture improves readability and maintainability.
 
-
-🧠 Design Philosophy
-Graceful Degradation: The tool is designed to work even without internet-dependent APIs by utilizing local fallback scripts and assets.
-
-Modularity: Each step is isolated. If you want to swap gTTS for ElevenLabs or OpenAI for Claude, you only need to update one file.
-
-Efficiency: Uses RSS feeds for news to ensure fast scraping without getting blocked by web firewalls.
+Designed as a working prototype, not a production system.
 
 📌 Evaluation Readiness
-✅ Clean Code: Adheres to PEP 8 standards.
 
-✅ Scalable: Modular architecture allows for easy feature additions (e.g., subtitles).
+This project satisfies:
 
-✅ Production-Ready Logic: Includes .gitignore for security and requirements.txt for reproducibility.
+✅ Feasible implementation
 
-Author: Snehil Srivastava
+✅ Practical use of AI tools
+
+✅ Clean automation pipeline
+
+✅ Easy-to-understand architecture
+
+✅ Graceful failure handling
+
+👤 Author
+
+Snehil Srivastava
+
 
 
