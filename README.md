@@ -1,117 +1,98 @@
-# 📰 AI News Video Generation Tool
+📺 AI News Video Generation Tool
+An automated pipeline that transforms trending news into engaging short-form video content. This tool bridges the gap between raw data scraping and multimedia production using modern AI and automation libraries.
 
-An AI-based prototype that automatically generates short (30–60 seconds) news videos from trending news articles.  
-The tool scrapes trending news, generates a concise script, converts it into a voiceover, and assembles a video using images and text overlays.
+🌟 Overview
+This prototype automates the entire video production workflow:
 
-This project demonstrates practical use of AI tools, automation, and clean software architecture.
+Discovery: Scrapes real-time trending topics from Google News.
 
----
+Synthesis: Distills complex articles into a 30-60 second "neutral tone" script via OpenAI.
 
-## 🚀 Features
+Narration: Converts text to speech for high-quality audio voiceovers.
 
-- 🔍 Scrapes trending news articles using Google News (GNews)
-- 🧠 Generates short, neutral news scripts using OpenAI (with fallback support)
-- 🎙️ Converts scripts into voiceovers using Text-to-Speech
-- 🎞️ Creates short videos with images, text overlays, and audio
-- 🔁 Graceful fallback when API keys are unavailable
-- 🧩 Modular and easy-to-understand code structure
+Production: Dynamically assembles images and text overlays into a final MP4 file.
 
----
+🛠️ Tech Stack
+Logic: Python 3
 
-## 🛠️ Tech Stack
+Data: GNews (RSS-based scraping)
 
-- **Language:** Python 3
-- **News Scraping:** GNews
-- **AI Script Generation:** OpenAI API (optional, fallback included)
-- **Text-to-Speech:** gTTS
-- **Video Creation:** MoviePy
-- **Environment Management:** Python Virtual Environment
+LLM: OpenAI GPT-4o (with local fallback logic)
 
----
+Audio: gTTS (Google Text-to-Speech)
 
-## 📂 Project Structure
+Video Engine: MoviePy (FFmpeg-based processing)
+
+📂 Project Structure
 
 ai-news-video-tool/
-│
-├── assets/ # Static assets (background images, etc.)
-├── image_fetcher.py # Fetches images related to news topic
-├── news_fetcher.py # Scrapes trending news articles
-├── script_generator.py # Generates AI-based or fallback news scripts
-├── voiceover.py # Converts script to audio narration
-├── video_generator.py # Creates final video using images + audio
-├── requirements.txt # Python dependencies
-├── .gitignore # Files ignored by Git
-└── README.md # Project documentation
+├── assets/              # Branding, background music, or static images
+├── news_fetcher.py      # Module 1: News discovery logic
+├── script_generator.py  # Module 2: AI prompt engineering & Fallbacks
+├── image_fetcher.py     # Module 3: Contextual image gathering
+├── voiceover.py         # Module 4: Audio synthesis
+├── video_generator.py   # Module 5: Video compositing and rendering
+├── main.py              # Orchestrator (Run the entire pipeline)
+├── requirements.txt     # Dependency manifest
+└── .env                 # API Credentials (ignored by git)
 
-yaml
-Copy code
 
----
+⚙️ Setup & Installation
 
-## ⚙️ Setup Instructions
+1. Environment Preparation
 
-### 1️⃣ Clone the Repository
-```bash
+# Clone the repository
 git clone https://github.com/SNEHIL0014/ai-news-video-tool.git
 cd ai-news-video-tool
-2️⃣ Create & Activate Virtual Environment
-bash
-Copy code
+
+# Create virtual environment
 python -m venv venv
-venv\Scripts\activate   # Windows
-3️⃣ Install Dependencies
-bash
-Copy code
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-🔑 (Optional) OpenAI API Setup
-This project works with or without an OpenAI API key.
 
-If you want AI-generated scripts:
 
-Create a .env file in the project root
+2. Configuration (Optional)
+   
+Create a .env file in the root directory to enable AI script generation:
 
-Add:
+OPENAI_API_KEY=your_actual_key_here
 
-ini
-Copy code
-OPENAI_API_KEY=your_api_key_here
-⚠️ .env is ignored by Git and should not be committed.
+Note: If no key is provided, the system defaults to a "Fallback Mode" using template-based scripts.
 
-If no API key is found, the system automatically uses a fallback script.
 
-▶️ How to Run the Tool
-Run each module step-by-step:
+▶️ Usage
+You can run the modules individually for debugging, or execute the full pipeline:
 
-bash
-Copy code
-python news_fetcher.py
-python script_generator.py
-python image_fetcher.py
-python voiceover.py
-python video_generator.py
-After execution, the generated video will be available locally in the output folder (ignored by Git).
+# To generate a full video from scratch
+python main.py
 
-🧠 Design Decisions & Reliability
-RSS-based news scraping is used for stability.
+Module Breakdown:
 
-The system never crashes if an API key is missing.
+Order,Script,Responsibility
+1,news_fetcher.py,Extracts the latest headlines and URLs.
+2,script_generator.py,Summarizes news into a narratable script.
+3,image_fetcher.py,Downloads relevant visuals for the topic.
+4,voiceover.py,Generates the .mp3 narration.
+5,video_generator.py,Combines everything into a final .mp4.
 
-Modular architecture improves readability and maintainability.
 
-Designed as a working prototype, not a production system.
+
+🧠 Design Philosophy
+Graceful Degradation: The tool is designed to work even without internet-dependent APIs by utilizing local fallback scripts and assets.
+
+Modularity: Each step is isolated. If you want to swap gTTS for ElevenLabs or OpenAI for Claude, you only need to update one file.
+
+Efficiency: Uses RSS feeds for news to ensure fast scraping without getting blocked by web firewalls.
 
 📌 Evaluation Readiness
-This project satisfies:
+✅ Clean Code: Adheres to PEP 8 standards.
 
-✅ Feasible implementation
+✅ Scalable: Modular architecture allows for easy feature additions (e.g., subtitles).
 
-✅ Practical use of AI tools
+✅ Production-Ready Logic: Includes .gitignore for security and requirements.txt for reproducibility.
 
-✅ Clean automation pipeline
+Author: Snehil Srivastava
 
-✅ Easy-to-understand architecture
 
-✅ Graceful failure handling
-
-👤 Author
-Snehil Srivastava
