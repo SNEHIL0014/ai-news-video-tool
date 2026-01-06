@@ -1,0 +1,27 @@
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated outputs
+output/audio/*
+output/images/*
+output/videos/*
+*.mp3
+*.mp4
+
+# IDE
+.vscode/
+.idea/
